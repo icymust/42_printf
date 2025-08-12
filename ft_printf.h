@@ -17,8 +17,9 @@
 #include <stdarg.h>
 
 int	ft_printf(const char *fmt, ...);
-int ft_print_char(int c);
+int	ft_print_char(int c);
 int	ft_print_str(const char *str);
+int	ft_check_format(const char *fmt, va_list ap);
 
 
 #endif

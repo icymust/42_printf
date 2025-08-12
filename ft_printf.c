@@ -12,9 +12,27 @@
 
 #include "ft_printf.h"
 
-// int check_format(){
-
-// }
+int	ft_check_format(const char *fmt, va_list ap)
+{
+	if (*fmt == 'c')
+		return (ft_print_char(va_arg(ap, int)));
+	else if (*fmt == 's')
+		return (ft_print_str(va_arg(ap, const char *)));
+	else if(*fmt == 'p')
+		return;
+	else if(*fmt == 'i')
+		return;
+	else if(*fmt == 'u')
+		return;
+	else if(*fmt == 'x')
+		return;
+	else if(*fmt == 'X')
+		return;
+	else if(*fmt == 'd')
+		return;
+	else
+		return (ft_print_char(*fmt));
+}
 
 int	ft_printf(const char *fmt, ...)
 {
@@ -29,12 +47,7 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%')
 		{
 			fmt++;
-			if (*fmt == 'c')
-				printed = ft_print_char(va_arg(ap, int));
-			else if (*fmt == 's')
-				printed = ft_print_str(va_arg(ap, const char *));
-			else
-				printed = ft_print_char(*fmt);
+			printed = ft_check_format(fmt, ap);
 		}
 		else
 			printed = ft_print_char(*fmt);
