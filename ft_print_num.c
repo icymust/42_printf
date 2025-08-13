@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_print_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/12 11:38:08 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 13:55:15 by mmustone         ###   ########.fr       */
+/*   Created: 2025/08/13 14:35:00 by mmustone          #+#    #+#             */
+/*   Updated: 2025/08/13 15:07:45 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *fmt, ...)
+int	ft_print_num(int num)
 {
-	va_list	ap;
-	int		total;
+	int		printed;
+	long	l;
 
-	total = 0;
-	va_start(ap, fmt);
-	while (*fmt)
+	printed = 0;
+	l = num;
+	if (l < 0)
 	{
-		if (*fmt == '%')
-		{
-			fmt++;
-			total += ft_check_format(fmt, ap);
-		}
-		else
-			total += ft_print_char(*fmt);
-		fmt++;
+		printed += ft_print_char('-');
+		l = -l;
 	}
-	va_end(ap);
-	return (total);
+	if (l == 0){
+        printed += ft_print_char('0');
+        return(1);
+    }
+
+    if (l > 0)
+    {
+        if (l / 10 > 0)
+            printed += ft_print_num(l / 10);
+        printed += ft_print_char((l % 10) + '0');
+    }
+	return (printed);
 }

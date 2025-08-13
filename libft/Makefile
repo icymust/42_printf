@@ -15,7 +15,7 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-.PHONY: all clear fclean re bonus
+.PHONY: all clean fclean re bonus
 
 $(NAME): ${OBJ_PATH}
 	ar rcs ${NAME} ${OBJ_PATH}

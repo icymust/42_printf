@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_put_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/12 11:38:08 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 13:55:15 by mmustone         ###   ########.fr       */
+/*   Created: 2025/08/13 12:01:15 by mmustone          #+#    #+#             */
+/*   Updated: 2025/08/13 14:28:03 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *fmt, ...)
+int	ft_put_hex(unsigned long num)
 {
-	va_list	ap;
-	int		total;
+	char	*hex_base;
+	int		printed;
 
-	total = 0;
-	va_start(ap, fmt);
-	while (*fmt)
-	{
-		if (*fmt == '%')
-		{
-			fmt++;
-			total += ft_check_format(fmt, ap);
-		}
-		else
-			total += ft_print_char(*fmt);
-		fmt++;
-	}
-	va_end(ap);
-	return (total);
+	printed = 0;
+	hex_base = "0123456789abcdef";
+	if (num >= 16)
+		printed += ft_put_hex(num / 16);
+	printed += ft_print_char(hex_base[num % 16]);
+	return (printed);
 }
