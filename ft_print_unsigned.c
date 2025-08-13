@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/12 12:59:26 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 15:24:01 by mmustone         ###   ########.fr       */
+/*   Created: 2025/08/13 15:20:51 by mmustone          #+#    #+#             */
+/*   Updated: 2025/08/13 15:25:56 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <unistd.h>
-
-int	ft_printf(const char *fmt, ...);
-int	ft_print_char(int c);
-int	ft_print_str(const char *str);
-int	ft_check_format(const char *fmt, va_list ap);
-int	ft_put_hex(unsigned long num);
-int	ft_print_pointer(void *pointer);
-int	ft_print_num(int num);
-int ft_print_unsigned(unsigned int num);
-
-#endif
+int ft_print_unsigned(unsigned int num){
+    int printed;
+    printed = 0;
+    if(num >=0)
+        printed += ft_print_unsigned(num/10);
+    printed += ft_print_char((num%10) + '0');
+    return(printed);
+}

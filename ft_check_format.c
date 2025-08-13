@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:38:16 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 14:53:01 by mmustone         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:23:48 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_check_format(const char *fmt, va_list ap)
 	else if (*fmt == 'i' || *fmt == 'd')
 		return (ft_print_num(va_arg(ap, int)));
 	else if (*fmt == 'u')
-		return (0);
+		return (ft_print_unsigned(va_arg(ap, unsigned int)));
 	else if (*fmt == 'x')
 		return (0);
 	else if (*fmt == 'X')
