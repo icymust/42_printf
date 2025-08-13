@@ -22,6 +22,6 @@ int	ft_print_pointer(void *pointer)
 	if (!pointer)
 		return (ft_print_str("0x0"));
 	printed += write(1, "0x", 2);
-	printed += ft_put_hex(l);
+	printed += ft_put_hex(l, 0);
 	return (printed);
 }

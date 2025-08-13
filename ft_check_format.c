@@ -25,9 +25,9 @@ int	ft_check_format(const char *fmt, va_list ap)
 	else if (*fmt == 'u')
 		return (ft_print_unsigned(va_arg(ap, unsigned int)));
 	else if (*fmt == 'x')
-		return (0);
+		return (ft_put_hex(va_arg(ap, unsigned int), 0));
 	else if (*fmt == 'X')
-		return (0);
+		return (ft_put_hex(va_arg(ap, unsigned int), 1));
 	else
 		return (ft_print_char(*fmt));
 }

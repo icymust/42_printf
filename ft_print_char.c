@@ -17,6 +17,6 @@ int	ft_print_char(int c)
 	unsigned char	ch;
 
 	ch = (unsigned char)c;
-	ft_putchar_fd(ch, 1);
+	write(1, &ch, 1);
 	return (1);
 }

@@ -15,7 +15,12 @@
 int ft_print_unsigned(unsigned int num){
     int printed;
     printed = 0;
-    if(num >=0)
+    if (num == 0)
+    {
+        printed += ft_print_char('0');
+        return (1);
+    }
+    if(num >= 10)
         printed += ft_print_unsigned(num/10);
     printed += ft_print_char((num%10) + '0');
     return(printed);

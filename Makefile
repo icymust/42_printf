@@ -7,25 +7,18 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 MAKE = make -C
-LIBFT_PATH = libft
-LIBFT = ${LIBFT_PATH}/libft.a
 
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re 
 
 $(NAME): ${OBJ_PATH}
-	${MAKE} ${LIBFT_PATH} all
-	cp ${LIBFT} ${NAME}
 	ar rcs ${NAME} ${OBJ_PATH}
 
 all: ${NAME}
 
 clean: 
-	${MAKE} ${LIBFT_PATH} clean
 	${RM} ${OBJ_PATH}
 
 fclean: clean
-	${MAKE} ${LIBFT_PATH} fclean
 	${RM} ${NAME}
 
 re: fclean all

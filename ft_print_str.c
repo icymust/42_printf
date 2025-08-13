@@ -18,7 +18,7 @@ int	ft_print_str(const char *str)
 
 	if (!str)
 	{
-		ft_putstr_fd("(null)", 1);
+		write(1,"(null)", 6);
 		return (6);
 	}
 	len = 0;

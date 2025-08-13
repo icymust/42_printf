@@ -14,26 +14,18 @@
 
 int	ft_print_num(int num)
 {
-	int		printed;
-	long	l;
+    int		printed;
+    long	l;
 
-	printed = 0;
-	l = num;
-	if (l < 0)
-	{
-		printed += ft_print_char('-');
-		l = -l;
-	}
-	if (l == 0){
-        printed += ft_print_char('0');
-        return(1);
-    }
-
-    if (l > 0)
+    printed = 0;
+    l = num;
+    if (l < 0)
     {
-        if (l / 10 > 0)
-            printed += ft_print_num(l / 10);
-        printed += ft_print_char((l % 10) + '0');
+        printed += ft_print_char('-');
+        l = -l;
     }
-	return (printed);
+    if (l >= 10)
+        printed += ft_print_num(l / 10);
+    printed += ft_print_char((l % 10) + '0');
+    return (printed);
 }
