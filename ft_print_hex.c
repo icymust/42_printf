@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_hex.c                                       :+:      :+:    :+:   */
+/*   ft_print_hex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_put_hex(unsigned long num, int case_type)
+int	ft_print_hex(unsigned long num, int case_type)
 {
 	char	*hex_base;
 	int		printed;
@@ -23,7 +23,7 @@ int	ft_put_hex(unsigned long num, int case_type)
    else
         hex_base = "0123456789abcdef";
 	if (num >= 16)
-		printed += ft_put_hex(num / 16, case_type);
+		printed += ft_print_hex(num / 16, case_type);
 	printed += ft_print_char(hex_base[num % 16]);
 	return (printed);
 }
