@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:38:16 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 15:23:48 by mmustone         ###   ########.fr       */
+/*   Updated: 2025/08/14 13:33:00 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_check_format(const char *fmt, va_list ap)
 		return (ft_print_hex(va_arg(ap, unsigned int), 0));
 	else if (*fmt == 'X')
 		return (ft_print_hex(va_arg(ap, unsigned int), 1));
+	else if (*fmt == '%')
+		return (ft_print_char('%'));
 	else
 		return (ft_print_char(*fmt));
 }

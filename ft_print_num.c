@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:35:00 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 15:07:45 by mmustone         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:53:51 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 int	ft_print_num(int num)
 {
-    int		printed;
-    long	l;
+	int		printed;
+	long	l;
+	int		temp;
 
-    printed = 0;
-    l = num;
-    if (l < 0)
-    {
-        printed += ft_print_char('-');
-        l = -l;
-    }
-    if (l >= 10)
-        printed += ft_print_num(l / 10);
-    printed += ft_print_char((l % 10) + '0');
-    return (printed);
+	printed = 0;
+	temp = 0;
+	l = num;
+	if (l < 0)
+	{
+		if (ft_print_char('-') == -1)
+			return (-1);
+		printed++;
+		l = -l;
+	}
+	if (l >= 10)
+		printed += ft_print_num(l / 10);
+	temp = ft_print_char((l % 10) + '0');
+	if (temp == -1)
+		return (-1);
+	printed += temp;
+	return (printed);
 }

@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 13:57:55 by mmustone          #+#    #+#             */
-/*   Updated: 2025/08/13 14:27:16 by mmustone         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:53:44 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int	ft_print_str(const char *str)
 {
-	int	len;
+	int	printed;
+	int	ret;
 
+	printed = 0;
 	if (!str)
+		str = "(null)";
+	while (*str)
 	{
-		write(1,"(null)", 6);
-		return (6);
+		ret = ft_print_char(*str++);
+		if (ret == -1)
+			return (-1);
+		printed += ret;
 	}
-	len = 0;
-	while (str[len])
-		len++;
-	if (write(1, str, len) != len)
-		return (-1);
-	return (len);
+	return (printed);
 }
