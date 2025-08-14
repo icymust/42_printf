@@ -15,15 +15,19 @@
 int	ft_print_unsigned(unsigned int num)
 {
 	int	printed;
+	int	temp;
 
 	printed = 0;
-	if (num == 0)
-	{
-		printed += ft_print_char('0');
-		return (1);
-	}
 	if (num >= 10)
-		printed += ft_print_unsigned(num / 10);
-	printed += ft_print_char((num % 10) + '0');
+	{
+		temp = ft_print_unsigned(num / 10);
+		if (temp == -1)
+			return (-1);
+		printed += temp;
+	}
+	temp = ft_print_char((num % 10) + '0');
+	if (temp == -1)
+		return (-1);
+	printed += temp;
 	return (printed);
 }

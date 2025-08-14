@@ -29,10 +29,14 @@ int	ft_print_num(int num)
 		l = -l;
 	}
 	if (l >= 10)
-		printed += ft_print_num(l / 10);
-	temp = ft_print_char((l % 10) + '0');
-	if (temp == -1)
+   {
+		temp = ft_print_num(l / 10);
+		if (temp == -1)
+			return (-1);
+		printed += temp;
+   }
+	if (ft_print_char((l % 10) + '0') == -1)
 		return (-1);
-	printed += temp;
+	printed ++;
 	return (printed);
 }

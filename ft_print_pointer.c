@@ -27,10 +27,9 @@ int	ft_print_pointer(void *pointer)
 		return (-1);
 	if (l == 0)
 	{
-		temp += write(1, "0", 1);
-		if (temp == -1)
+		if (write(1, "0", 1) == -1)
 			return (-1);
-		printed += temp;
+		printed ++;
 	}
 	else
 	{
